@@ -1,3 +1,5 @@
+import copy
+
 import cell
 import piece
 
@@ -37,15 +39,18 @@ class Board:
             self.layout += [tempList]
 
     def possibleMoves(self, cp):
+        output = []
         yDirection = -1
         moveable = 'R'
+
         if cp == 0:
             yDirection = 1
             moveable = 'B'
 
-        copy = self.layout
+        layoutCopy = None
 
         for i in self.layout:
+            layoutCopy = copy.deepcopy(self.layout)
             jCounter = 0
             for j in i:
                 if j.givenPiece is None or j.givenPiece.icon != moveable:
@@ -59,16 +64,22 @@ class Board:
                     if jCounter == 0 or jCounter == 7:
                         r = 1
                     for k in range(r):
+                        # Checks for empty space
                         if self.layout[j.y + yDirection][j.x + xDirection].givenPiece.icon == 'X':
                             # Add this move to the board
-                            print("No Piece", j.x, " ", j.y)
+                            layoutCopy[j.y + yDirection][j.x + xDirection].givenPiece = layoutCopy[j.y][j.x].givenPiece
+                            layoutCopy[j.y][j.x].givenPiece = piece.Piece('X', j.y, j.x)
+                        # Checks for same piece
                         elif self.layout[j.y + yDirection][j.x + xDirection].givenPiece.icon == moveable:
                             jCounter += 1
                             continue
                         else:
-                            print("Red Piece")
+                            print("Red Piece", j.x, " ", j.y)
                         xDirection *= -1
                 jCounter += 1
+                output += [copy.deepcopy(layoutCopy)]
+        return copy.deepcopy(output)
+
 
     def printSelf(self):
         for i in range(8):

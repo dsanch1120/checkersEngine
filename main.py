@@ -13,7 +13,7 @@ def play():
     d = drawBoard.DrawBoard()
     d.beginGame()
     d.draw()
-    d.b.possibleMoves(d.currentPlayer)
+    test = d.b.possibleMoves(d.currentPlayer)
 
     print("All done!")
 

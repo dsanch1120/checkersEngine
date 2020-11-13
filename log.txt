@@ -1,0 +1,5 @@
+Log for the checkers games. This will be updated whenever I push to git
+
+November 13, 10AM
+- Board object can now generate possible moves, however it generates 5 too many on the first move.
+- Pushing to git so that I can get this done at work after I get my homework done.
