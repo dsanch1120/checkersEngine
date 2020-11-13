@@ -12,9 +12,10 @@ def play():
 
     d = drawBoard.DrawBoard()
     d.beginGame()
-    d.draw()
+    #d.draw()
     test = d.b.possibleMoves(d.currentPlayer)
-
+    d.b.layout = test[1]
+    d.draw()
     print("All done!")
 
 
