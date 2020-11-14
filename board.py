@@ -50,9 +50,10 @@ class Board:
         layoutCopy = None
 
         for i in self.layout:
-            layoutCopy = copy.deepcopy(self.layout)
+            #layoutCopy = copy.deepcopy(self.layout)
             # jCounter = 0
             for j in copy.deepcopy(i):
+                #layoutCopy = copy.deepcopy(self.layout)
                 if j.givenPiece.icon == 'X' or j.givenPiece.icon != moveable:
                     # jCounter += 1
                     continue
@@ -70,6 +71,8 @@ class Board:
                     #                    if jCounter == 0 or jCounter == 7:
                     #                        r = 1
                     for k in range(r):
+                        layoutCopy = copy.deepcopy(self.layout)
+                        print(k + 1, " ", xDirection, " ", j.x, " ", j.y)
                         # Checks for empty space
                         if self.layout[j.y + yDirection][j.x + xDirection].givenPiece.icon == 'X':
                             # Add this move to the board
@@ -79,10 +82,11 @@ class Board:
                         # Checks for same piece
                         elif self.layout[j.y + yDirection][j.x + xDirection].givenPiece.icon == moveable:
                             # jCounter += 1
+                            xDirection = -xDirection
                             continue
                         else:
                             print("Red Piece", j.x, " ", j.y)
-                        xDirection *= -1
+                        xDirection = -xDirection
                         output += [copy.deepcopy(layoutCopy)]
         #                    jCounter += 1
         return copy.deepcopy(output)

@@ -14,7 +14,7 @@ def play():
     d.beginGame()
     #d.draw()
     test = d.b.possibleMoves(d.currentPlayer)
-    d.b.layout = test[1]
+    d.b.layout = test[6]
     d.draw()
     print("All done!")
 
