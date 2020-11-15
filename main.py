@@ -2,21 +2,14 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-import board
-import drawBoard
+
+import engine
+
 
 def play():
-    #b = board.Board()
 
-    #b.printSelf()
-
-    d = drawBoard.DrawBoard()
-    d.beginGame()
-    #d.draw()
-    test = d.b.possibleMoves(d.currentPlayer)
-    d.b.layout = test[6]
-    d.draw()
-    print("All done!")
+    e = engine.Engine()
+    e.ctrl()
 
 
 # Press the green button in the gutter to run the script.

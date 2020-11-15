@@ -1,9 +1,5 @@
 Log for the checkers games. This will be updated whenever I push to git
 
-November 14, 6PM
-- Added a new class, Engine that will control the game. Array of opening moves is now an array 
-  of Board objects rather than a 3D array containing board layouts 
-
 November 14, 3PM
 - Program can now correctly generate an array of opening moves
 

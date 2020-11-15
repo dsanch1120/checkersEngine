@@ -1,4 +1,5 @@
 import copy
+import uuid
 
 import cell
 import piece
@@ -6,9 +7,21 @@ import piece
 
 class Board:
     layout = []
+    score = 0
 
     def __init__(self):
         self.makeBoard()
+        self.id = uuid.uuid1()
+
+    def generateScore(self, checkIcon):
+        for i in self.layout:
+            for j in i:
+                if j.givenPiece.icon == 'X':
+                    continue
+                elif j.givenPiece.icon == checkIcon:
+                    self.score += 1
+                else:
+                    self.score -= 1
 
     def makeBoard(self):
         for i in range(8):
@@ -72,7 +85,6 @@ class Board:
                     #                        r = 1
                     for k in range(r):
                         layoutCopy = copy.deepcopy(self.layout)
-                        print(k + 1, " ", xDirection, " ", j.x, " ", j.y)
                         # Checks for empty space
                         if self.layout[j.y + yDirection][j.x + xDirection].givenPiece.icon == 'X':
                             # Add this move to the board
